@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Pasted.Domain.Paste>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -28,4 +29,18 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
+</div>
+
+<h2>Pastes</h2>
+
+<div class="row">
+    @foreach (var paste in Model)
+    {
+        <div class="col-md-7">
+            <div class="thumbnail" style="margin-bottom: 20px;">
+                <p><strong>Paste ID: @paste.Id</strong></p>
+                <pre>@paste.Content</pre>
+            </div>
+        </div>
+    }
 </div>
