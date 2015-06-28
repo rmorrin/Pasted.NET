@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -7,14 +8,34 @@ using System.Threading.Tasks;
 
 namespace Pasted.DataAccess
 {
-    public interface IRepository
+    public class GenericRepository : IRepository
     {
+        private DbContext _dbContext;
+
+        public GenericRepository(DbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        /// <summary>
+        /// Gets the query.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <returns></returns>
+        private IQueryable<TEntity> GetQuery<TEntity>() where TEntity : class
+        {
+            return _dbContext.Set<TEntity>();
+        }
+
         /// <summary>
         /// Gets all.
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <returns></returns>
-        IEnumerable<TEntity> GetAll<TEntity>() where TEntity : class;
+        public IEnumerable<TEntity> GetAll<TEntity>() where TEntity : class
+        {
+            return GetQuery<TEntity>().AsEnumerable();
+        }
 
         /// <summary>
         /// Finds entities based on provided criteria.
@@ -22,7 +43,10 @@ namespace Pasted.DataAccess
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="criteria">The criteria.</param>
         /// <returns></returns>
-        IEnumerable<TEntity> Find<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class;
+        public IEnumerable<TEntity> Find<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class
+        {
+            return GetQuery<TEntity>().Where(criteria);
+        }
 
         /// <summary>
         /// Finds one entity based on provided criteria.
@@ -30,14 +54,20 @@ namespace Pasted.DataAccess
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="criteria">The criteria.</param>
         /// <returns></returns>
-        TEntity FindOne<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class;
+        public TEntity FindOne<TEntity>(Expression<Func<TEntity, bool>> criteria) where TEntity : class
+        {
+            return GetQuery<TEntity>().Where(criteria).FirstOrDefault();
+        }
 
         /// <summary>
         /// Adds the specified entity.
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="entity">The entity.</param>
-        void Add<TEntity>(TEntity entity) where TEntity : class;
+        public void Add<TEntity>(TEntity entity) where TEntity : class
+        {
+            _dbContext.Set<TEntity>().Add(entity);
+        }
 
         /// <summary>
         /// Updates changes of the existing entity.
@@ -45,13 +75,19 @@ namespace Pasted.DataAccess
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="entity">The entity.</param>
-        void Update<TEntity>(TEntity entity) where TEntity : class;
+        public void Update<TEntity>(TEntity entity) where TEntity : class
+        {
+            _dbContext.Set<TEntity>().Attach(entity);
+        }
 
         /// <summary>
         /// Deletes the specified entity.
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="entity">The entity.</param>
-        void Delete<TEntity>(TEntity entity) where TEntity : class;
+        public void Delete<TEntity>(TEntity entity) where TEntity : class
+        {
+            _dbContext.Set<TEntity>().Remove(entity);
+        }
     }
 }
