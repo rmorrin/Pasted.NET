@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Migrations\201506262252289_Initial.cs" />
     <Compile Include="Migrations\201506262252289_Initial.Designer.cs">
       <DependentUpon>201506262252289_Initial.cs</DependentUpon>
