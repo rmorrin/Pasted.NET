@@ -2,6 +2,7 @@
 using Pasted.Domain;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,12 +11,13 @@ namespace Pasted.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository _repository;
 
-        public HomeController()
+        public HomeController(IUnitOfWork unitOfWork, IRepository repository)
         {
-            // This is only temporary IoC is configured
-            _repository = new GenericRepository(new PastedDbContext());
+            _unitOfWork = unitOfWork;
+            _repository = repository;
         }
 
         public ActionResult Index()
