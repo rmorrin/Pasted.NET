@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Pasted.DataAccess
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
-        void Dispose();
-        void SaveChanges();
-        void Dispose(bool disposing);
+        void Commit();
     }
 }
