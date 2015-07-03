@@ -78,6 +78,8 @@ namespace Pasted.DataAccess
         public void Update<TEntity>(TEntity entity) where TEntity : class
         {
             _dbContext.Set<TEntity>().Attach(entity);
+            // Below line added by Elezium.  To be checked.
+            _dbContext.Entry<TEntity>(entity).State = EntityState.Modified;
         }
 
         /// <summary>

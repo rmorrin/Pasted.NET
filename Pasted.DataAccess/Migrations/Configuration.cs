@@ -23,9 +23,9 @@ namespace Pasted.DataAccess.Migrations
             //
             var pastes = new List<Paste>
             {
-                new Paste { Id = 1, Content = "console.log('Test1');" },
-                new Paste { Id = 2, Content = "var x = new Exception(\"test\");" },
-                new Paste { Id = 3, Content = "var arr = [1, 2, 3, 4, 5];\nconsole.log(arr.slice(0, 2));" }
+                new Paste { Id = 1, Content = "console.log('Test1');", CreatedDate=DateTime.Now, ExpiryDate=DateTime.Now.AddDays(3)},
+                new Paste { Id = 2, Content = "var x = new Exception(\"test\");", CreatedDate=DateTime.Now, ExpiryDate=DateTime.Now.AddDays(3) },
+                new Paste { Id = 3, Content = "var arr = [1, 2, 3, 4, 5];\nconsole.log(arr.slice(0, 2));", CreatedDate=DateTime.Now, ExpiryDate=DateTime.Now.AddDays(3) }
             };
 
             context.Pastes.AddOrUpdate(p => p.Id, pastes.ToArray());

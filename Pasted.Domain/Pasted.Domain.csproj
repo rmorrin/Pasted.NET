@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainBase.cs" />
+    <Compile Include="Language.cs" />
     <Compile Include="Paste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

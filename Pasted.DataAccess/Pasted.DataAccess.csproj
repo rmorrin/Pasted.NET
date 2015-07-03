@@ -53,6 +53,10 @@
     <Compile Include="Migrations\201506262252289_Initial.Designer.cs">
       <DependentUpon>201506262252289_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507030112109_Added Language DBSet.cs" />
+    <Compile Include="Migrations\201507030112109_Added Language DBSet.Designer.cs">
+      <DependentUpon>201507030112109_Added Language DBSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PastedDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201506262252289_Initial.resx">
       <DependentUpon>201506262252289_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507030112109_Added Language DBSet.resx">
+      <DependentUpon>201507030112109_Added Language DBSet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

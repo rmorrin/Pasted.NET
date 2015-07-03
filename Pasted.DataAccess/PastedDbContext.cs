@@ -11,6 +11,7 @@ namespace Pasted.DataAccess
    public class PastedDbContext : DbContext
     {
         public DbSet<Paste> Pastes { get; set; }
+        public DbSet<Language> Languages { get; set; }
 
        public PastedDbContext()
        {
