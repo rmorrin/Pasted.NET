@@ -229,6 +229,10 @@
       <Project>{3df809eb-0e20-47df-8b0e-a7319b157360}</Project>
       <Name>Pasted.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pasted.Services\Pasted.Services.csproj">
+      <Project>{d312dbe5-49c9-4f27-b1c1-419ed25b5d7c}</Project>
+      <Name>Pasted.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pasted.Tasks\Pasted.Tasks.csproj">
       <Project>{12b4cd63-46ff-472e-b183-8786d43ebf64}</Project>
       <Name>Pasted.Tasks</Name>

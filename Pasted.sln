@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pasted.Domain", "Pasted.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pasted.Tasks", "Pasted.Tasks\Pasted.Tasks.csproj", "{12B4CD63-46FF-472E-B183-8786D43EBF64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pasted.Services", "Pasted.Services\Pasted.Services.csproj", "{D312DBE5-49C9-4F27-B1C1-419ED25B5D7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{12B4CD63-46FF-472E-B183-8786D43EBF64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12B4CD63-46FF-472E-B183-8786D43EBF64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12B4CD63-46FF-472E-B183-8786D43EBF64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D312DBE5-49C9-4F27-B1C1-419ED25B5D7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D312DBE5-49C9-4F27-B1C1-419ED25B5D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D312DBE5-49C9-4F27-B1C1-419ED25B5D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D312DBE5-49C9-4F27-B1C1-419ED25B5D7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

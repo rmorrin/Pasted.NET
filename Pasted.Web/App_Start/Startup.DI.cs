@@ -16,6 +16,8 @@ namespace Pasted.Web
 {
     public partial class Startup
     {
+        private static Assembly ServicesAssembly = Assembly.Load("Pasted.Services");
+
         public void ConfigureDependencyInjection(IAppBuilder app)
         {
             // Create a new Simple Injector container
@@ -41,7 +43,16 @@ namespace Pasted.Web
             container.RegisterPerWebRequest<IUnitOfWork, UnitOfWork>();
             container.Register<IRepository, GenericRepository>();
 
-            // Services
+            // Register all services as their implementing interfaces
+            var registrations = ServicesAssembly.GetExportedTypes()
+                .Where(t => t.Namespace == "Pasted.Services" && t.GetInterfaces().Any())
+                .Select(t => new { Interface = t.GetInterfaces().Single(), Implementation = t });
+
+            foreach (var registration in registrations)
+            {
+                container.Register(registration.Interface, registration.Implementation);
+            }
+
             // TODO
         }
     }
