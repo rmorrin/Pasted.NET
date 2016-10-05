@@ -1,0 +1,27 @@
+@model CreatePasteViewModel
+
+<div class="container" id="main">
+        <form asp-controller="Paste" asp-action="Create" method="post">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label asp-for="Content">Paste Content</label>
+                        <textarea asp-for="Content" class="form-control" rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        <label asp-for="Language">Language</label>
+                        <select class="form-control" asp-for="Language" asp-items="@(new SelectList(ViewBag.Languages, "Id", "Name"))">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
