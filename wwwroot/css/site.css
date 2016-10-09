@@ -57,8 +57,18 @@ body {
     margin-top: 20px;
 }
 
+textarea {
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow: scroll;
+}
+
 pre {
     padding: 0;
     background: none;
     border: none;
+}
+
+pre code {
+    white-space: pre;
 }

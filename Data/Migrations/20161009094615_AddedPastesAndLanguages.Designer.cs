@@ -8,7 +8,7 @@ using Pasted.Data;
 namespace Pasted.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160929205727_AddedPastesAndLanguages")]
+    [Migration("20161009094615_AddedPastesAndLanguages")]
     partial class AddedPastesAndLanguages
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -179,7 +179,7 @@ namespace Pasted.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("PrismName");
+                    b.Property<string>("Tag");
 
                     b.HasKey("Id");
 
@@ -197,7 +197,7 @@ namespace Pasted.Data.Migrations
 
                     b.Property<DateTime>("ExpiryDate");
 
-                    b.Property<int>("LanguageId");
+                    b.Property<int?>("LanguageId");
 
                     b.Property<bool>("Private");
 
@@ -251,8 +251,7 @@ namespace Pasted.Data.Migrations
                 {
                     b.HasOne("Pasted.Models.Language", "Language")
                         .WithMany()
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("LanguageId");
                 });
         }
     }

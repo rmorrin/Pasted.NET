@@ -178,7 +178,7 @@ namespace Pasted.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("PrismName");
+                    b.Property<string>("Tag");
 
                     b.HasKey("Id");
 
@@ -196,7 +196,7 @@ namespace Pasted.Data.Migrations
 
                     b.Property<DateTime>("ExpiryDate");
 
-                    b.Property<int>("LanguageId");
+                    b.Property<int?>("LanguageId");
 
                     b.Property<bool>("Private");
 
@@ -250,8 +250,7 @@ namespace Pasted.Data.Migrations
                 {
                     b.HasOne("Pasted.Models.Language", "Language")
                         .WithMany()
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("LanguageId");
                 });
         }
     }

@@ -19,7 +19,7 @@ namespace Pasted.Models
         public DateTime CreatedDate { get; set; }
         public DateTime ExpiryDate { get; set; }
         public bool Private { get; set; }
-        public int LanguageId { get; set; }
+        public int? LanguageId { get; set; }
         public virtual Language Language { get; set; }
     }
 }

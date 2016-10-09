@@ -15,7 +15,7 @@ namespace Pasted.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
-                    PrismName = table.Column<string>(nullable: true)
+                    Tag = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -31,7 +31,7 @@ namespace Pasted.Data.Migrations
                     Content = table.Column<string>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     ExpiryDate = table.Column<DateTime>(nullable: false),
-                    LanguageId = table.Column<int>(nullable: false),
+                    LanguageId = table.Column<int>(nullable: true),
                     Private = table.Column<bool>(nullable: false),
                     Title = table.Column<string>(nullable: true)
                 },
@@ -43,7 +43,7 @@ namespace Pasted.Data.Migrations
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

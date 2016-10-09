@@ -9,6 +9,6 @@ namespace Pasted.Models
     public class Language : IdentityBase
     {
         public string Name { get; set; }
-        public string PrismName { get; set; }
+        public string Tag { get; set; }
     }
 }

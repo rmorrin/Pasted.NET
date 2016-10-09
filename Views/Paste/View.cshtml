@@ -4,9 +4,10 @@
 <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
         <div class="well">
-            <pre><code class="@Model.Language.PrismName">@Model.Content</code>
+            <pre>
+                <code class="@(Model.Language?.Tag ?? "no-highlight")">@Model.Content</code>
             </pre>
-            <span class="label label-primary">Language: @Model.Language.Name</span>
+            <span class="label label-primary">Language: @(Model.Language?.Name ?? "None")</span>
         </div>
     </div>
 </div>
