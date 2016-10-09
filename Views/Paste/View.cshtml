@@ -1,13 +1,16 @@
 @model Pasted.Models.Paste
 
-<div class="container" id="main">
-    <div class="row">
-        <div class="col-xs-6">
-            <pre>@Model.Content</pre>
-        </div>
-        <div class="col-xs-12">
-            <p>Language: @Model.Language.Name</p>
+
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="well">
+            <pre><code class="@Model.Language.PrismName">@Model.Content</code>
+            </pre>
+            <span class="label label-primary">Language: @Model.Language.Name</span>
         </div>
     </div>
 </div>
 
+<link rel="stylesheet" href="~/lib/highlightjs/styles/zenburn.css">
+<script src="~/lib/highlightjs/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>

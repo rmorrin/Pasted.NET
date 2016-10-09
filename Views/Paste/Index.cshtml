@@ -1,27 +1,25 @@
 @model CreatePasteViewModel
 
-<div class="container" id="main">
-        <form asp-controller="Paste" asp-action="Create" method="post">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label asp-for="Content">Paste Content</label>
-                        <textarea asp-for="Content" class="form-control" rows="6"></textarea>
-                    </div>
+<form asp-controller="Paste" asp-action="Create" method="post">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="well">
+                <div class="form-group label-static">
+                    <label asp-for="Content" class="control-label">Paste Content</label>
+                    <textarea asp-for="Content" class="form-control" rows="8"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <div class="form-group label-static">
+                    <label asp-for="Language" class="control-label">Language</label>
+                    <select class="form-control" asp-for="Language" asp-items="@(new SelectList(ViewBag.Languages, "Id", "Name"))">
+                        <option value="0">Please Select..</option>
+                    </select>
+                    <span asp-validation-for="Language" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-raised btn-primary">Create</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-2">
-                    <div class="form-group">
-                        <label asp-for="Language">Language</label>
-                        <select class="form-control" asp-for="Language" asp-items="@(new SelectList(ViewBag.Languages, "Id", "Name"))">
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Create</button>
-                    </div>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>

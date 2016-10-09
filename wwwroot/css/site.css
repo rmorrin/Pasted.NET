@@ -6,8 +6,7 @@ body {
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-top: 40px;
 }
 
 /* Carousel */
@@ -42,19 +41,24 @@ body {
   }
 }
 
+.home-hero .card-image {
+    background: #111;
+}
 
-.home-hero {
-    background: #00897B;
-    padding: 100px;
-    margin: 0 -15px;
-    color: #eee;
+.home-hero .card-image img {
+    opacity: 0.3;
 }
 
 .home-hero p {
     font-size: 20px;
-    font-weight:lighter;
 }
 
 #main {
     margin-top: 20px;
+}
+
+pre {
+    padding: 0;
+    background: none;
+    border: none;
 }

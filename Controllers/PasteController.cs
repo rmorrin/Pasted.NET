@@ -27,6 +27,7 @@ namespace Pasted.Controllers
             return View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> Create(CreatePasteViewModel model)
         {
             if (ModelState.IsValid)
@@ -43,6 +44,8 @@ namespace Pasted.Controllers
 
                 return RedirectToAction("View", new { id = paste.Id });
             }
+
+            ViewData["Languages"] = await _repository.GetAllAsync();
 
             return View("Index", model);
         }
