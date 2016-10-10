@@ -60,7 +60,7 @@ body {
 textarea {
     white-space: pre;
     overflow-wrap: normal;
-    overflow: scroll;
+    overflow: auto;
 }
 
 pre {
