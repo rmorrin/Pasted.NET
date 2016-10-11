@@ -42,7 +42,7 @@ namespace Pasted
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration["DefaultConnection"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(o =>
             {

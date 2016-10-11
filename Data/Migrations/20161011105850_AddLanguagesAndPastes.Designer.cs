@@ -8,8 +8,8 @@ using Pasted.Data;
 namespace Pasted.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161009094615_AddedPastesAndLanguages")]
-    partial class AddedPastesAndLanguages
+    [Migration("20161011105850_AddLanguagesAndPastes")]
+    partial class AddLanguagesAndPastes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

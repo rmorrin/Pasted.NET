@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pasted.Data.Migrations
 {
-    public partial class AddedPastesAndLanguages : Migration
+    public partial class AddLanguagesAndPastes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace Pasted.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
                     Name = table.Column<string>(nullable: true),
                     Tag = table.Column<string>(nullable: true)
                 },
@@ -27,7 +27,7 @@ namespace Pasted.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
                     Content = table.Column<string>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     ExpiryDate = table.Column<DateTime>(nullable: false),
