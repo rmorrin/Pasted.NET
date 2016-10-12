@@ -11,26 +11,26 @@ namespace Pasted.Controllers
 {
     public class SeedController : Controller
     {
-        private readonly IRepository<Language> _languages;
+        private readonly ILanguageRepository _languageRepository;
 
-        public SeedController (IRepository<Language> languages)
+        public SeedController (ILanguageRepository languageRepository)
         {
-          _languages = languages;
+            _languageRepository = languageRepository;
         }
 
         public async Task<ActionResult> Languages(bool delete)
         {
             if (delete)
             {
-                foreach (var language in await _languages.GetAllAsync())
+                foreach (var language in await _languageRepository.GetAllAsync())
                 {
-                    await _languages.DeleteAsync(language);
+                    await _languageRepository.DeleteAsync(language);
                 }
 
                 return Content($"All languages deleted");
             }
 
-            var languages = await _languages.GetAllAsync();
+            var languages = await _languageRepository.GetAllAsync();
 
             if (!languages.Any())
             {
@@ -62,7 +62,7 @@ namespace Pasted.Controllers
 
                 foreach (var language in newLanguages)
                 {
-                    await _languages.AddAsync(language);
+                    await _languageRepository.AddAsync(language);
                 }
 
                 return Content($"{newLanguages.Count} Languages created");

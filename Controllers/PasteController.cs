@@ -12,17 +12,17 @@ namespace Pasted.Controllers
     public class PasteController : Controller
     {
         private readonly IPasteRepository _pasteRepository;
-        private readonly IRepository<Language> _repository;
+        private readonly ILanguageRepository _languageRepository;
 
-        public PasteController (IPasteRepository pasteRepository, IRepository<Language> repository)
+        public PasteController (IPasteRepository pasteRepository, ILanguageRepository languageRepository)
         {
             _pasteRepository = pasteRepository;
-            _repository = repository;
+            _languageRepository = languageRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            ViewData["Languages"] = await _repository.GetAllAsync();
+            ViewData["Languages"] = await _languageRepository.GetAllAsync();
 
             return View();
         }
@@ -32,7 +32,7 @@ namespace Pasted.Controllers
         {
             if (ModelState.IsValid)
             {
-                var language = await _repository.FindOneAsync(m => m.Id == model.Language);
+                var language = await _languageRepository.FindOneAsync(m => m.Id == model.Language);
 
                 var paste = new Paste
                 {
@@ -45,7 +45,7 @@ namespace Pasted.Controllers
                 return RedirectToAction("View", new { id = paste.Id });
             }
 
-            ViewData["Languages"] = await _repository.GetAllAsync();
+            ViewData["Languages"] = await _languageRepository.GetAllAsync();
 
             return View("Index", model);
         }

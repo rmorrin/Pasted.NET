@@ -10,16 +10,11 @@ namespace Pasted.Data.Repositories
 {
     public class PasteRepository : GenericRepository<Paste>, IPasteRepository
     {
-        private readonly ApplicationDbContext _context;
+        public PasteRepository (ApplicationDbContext context) : base (context) { }
 
-        public PasteRepository (ApplicationDbContext context) : base (context)
+        protected override IQueryable<Paste> AddIncludes(IQueryable<Paste> queryable)
         {
-          _context = context;
-        }
-
-        protected override IQueryable<Paste> GetQuery()
-        {
-            return _context.Set<Paste>().Include(p => p.Language);
+            return queryable.Include(p => p.Language);
         }
     }
 }

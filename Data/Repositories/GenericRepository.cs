@@ -7,24 +7,26 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Pasted.Data.Repositories
 {
-    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
-    {
-        private readonly ApplicationDbContext _context;
+public abstract class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
+{
+    private readonly ApplicationDbContext _context;
+    private readonly DbSet<TEntity> _dbSet;
 
         public GenericRepository (ApplicationDbContext context)
         {
             _context = context;
+            _dbSet = context.Set<TEntity>();
         }
 
         public async Task AddAsync(TEntity entity)
         {
-            _context.Set<TEntity>().Add(entity);
+            _dbSet.Add(entity);
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(TEntity entity)
         {
-            _context.Set<TEntity>().Remove(entity);
+            _dbSet.Remove(entity);
             await _context.SaveChangesAsync();
         }
 
@@ -45,13 +47,18 @@ namespace Pasted.Data.Repositories
 
         public async Task UpdateAsync(TEntity entity)
         {
-            _context.Set<TEntity>().Attach(entity);
+            _dbSet.Attach(entity);
             await _context.SaveChangesAsync();
         }
-        
-        protected virtual IQueryable<TEntity> GetQuery()
+
+        protected virtual IQueryable<TEntity> AddIncludes(IQueryable<TEntity> queryable)
         {
-            return _context.Set<TEntity>();
+            return queryable;
+        }
+
+        protected IQueryable<TEntity> GetQuery()
+        {
+            return AddIncludes(_dbSet);
         }
     }
 }

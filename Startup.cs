@@ -58,8 +58,8 @@ namespace Pasted
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IPasteRepository, PasteRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
