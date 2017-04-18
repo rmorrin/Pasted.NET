@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26114.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "pasted-net", "pasted-net.xproj", "{A7B30DC0-0767-40FD-9040-5A73420FF453}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pasted-net", "pasted-net.csproj", "{A7B30DC0-0767-40FD-9040-5A73420FF453}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
