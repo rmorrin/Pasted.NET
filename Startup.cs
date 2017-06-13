@@ -53,6 +53,9 @@ namespace Pasted
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
+            // Add application insights
+            services.AddApplicationInsightsTelemetry(Configuration);
+
             services.AddMvc();
 
             // Add application services.
