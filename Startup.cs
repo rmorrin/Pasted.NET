@@ -56,6 +56,7 @@ namespace Pasted
             // Add application insights
             services.AddApplicationInsightsTelemetry(Configuration);
 
+            services.AddRouting(options => options.LowercaseUrls = true);
             services.AddMvc();
 
             // Add application services.
